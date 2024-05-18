@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Noto Sans Mono";
+}
+
+.scroll {
+  background-color: red;
+  font-size: 100px;
+  margin: 200px !important;
+}
