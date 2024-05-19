@@ -11,7 +11,7 @@ export default function Root() {
             <Link to={"rooms"}>MANAGE ROOMS</Link>
           </button>
           <button className="border-2 rounded-md p-3 cursor-pointer hover:bg-white hover:text-black">
-            ABOUT
+            <Link to={"live"}>LIVE</Link>
           </button>
         </div>
       </div>
