@@ -289,10 +289,7 @@ export default function Room() {
                   key={deviceId}
                   className="flex items-center justify-between mb-2"
                 >
-                  <span>
-                    Device:
-                    {findDeviceNameById(devices, deviceId)}
-                  </span>
+                  <span>Device: {findDeviceNameById(devices, deviceId)}</span>
                   <button
                     type="button"
                     onClick={() => handleRemoveDevice(deviceId)}
