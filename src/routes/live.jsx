@@ -75,15 +75,32 @@ export default function Live() {
   const [geoData, setGeoData] = useState();
 
   useEffect(() => {
-    var source = new EventSource("http://localhost:8888/live");
-    source.onmessage = function (event) {
-      setGeoData(JSON.parse(event.data));
-    };
+    // Eventually use server side emitted events to update live data
+    // var source = new EventSource("http://localhost:8888/live");
+    // source.onmessage = function (event) {
+    //   setGeoData(JSON.parse(event.data));
+    // };
+    // return () => {
+    //   source.close();
+    // };
 
-    return () => {
-      source.close();
-    };
+    // For now, just fetch the data every 5 seconds but polling is boring
+    getLiveData();
+    const interval = setInterval(() => {
+      getLiveData();
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
+
+  const getLiveData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8888/live`);
+      setGeoData(response.data);
+    } catch (error) {
+      console.error("Error fetching room:", error);
+    }
+  };
 
   const style = (feature) => {
     if (feature.properties.type === "perimeter") {
