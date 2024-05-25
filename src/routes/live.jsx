@@ -5,73 +5,6 @@ import { MapContainer, TileLayer, GeoJSON, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default function Live() {
-  const geojsonData = {
-    type: "FeatureCollection",
-    features: [
-      {
-        type: "Feature",
-        properties: {
-          name: "Building",
-          type: "perimeter",
-        },
-        geometry: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [0, 0],
-              [0, 150],
-              [100, 100],
-              [100, 0],
-              [0, 0],
-            ],
-          ],
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          name: "Kitchen",
-          roomId: 1,
-          users: [2727],
-          type: "room",
-        },
-        geometry: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [10, 10],
-              [30, 10],
-              [30, 30],
-              [10, 30],
-              [10, 10],
-            ],
-          ],
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          name: "Living Room",
-          roomId: 2,
-          users: [2727, 3030],
-          type: "room",
-        },
-        geometry: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [40, 10],
-              [60, 10],
-              [60, 30],
-              [40, 30],
-              [40, 10],
-            ],
-          ],
-        },
-      },
-    ],
-  };
-
   const [geoData, setGeoData] = useState();
 
   useEffect(() => {
@@ -141,7 +74,7 @@ export default function Live() {
       <MapContainer
         className="w-full h-full"
         center={[50, 50]}
-        zoom={2}
+        zoom={1}
         style={{ backgroundColor: "inherit" }}
         crs={L.CRS.Simple}
         zoomControl={false}
