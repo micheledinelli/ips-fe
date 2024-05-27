@@ -141,7 +141,7 @@ export default function Room() {
   };
 
   return (
-    <div className="w-full h-screen text-white bg-cover bg-hero-pattern-1 overflow-hidden">
+    <div className="w-full h-screen text-white bg-slate-900 overflow-x-hidden">
       <ToastContainer />
       <div className="fixed top-3 p-5 w-full flex justify-between items-center text-xl md:text-2xl">
         <button className="border-2 rounded-md p-3 cursor-pointer hover:bg-white hover:text-black">
@@ -150,7 +150,7 @@ export default function Room() {
 
         {roomId && <h1>id: {roomId}</h1>}
       </div>
-      <div className="flex flex-row w-full h-full justify-evenly items-center">
+      <div className="flex flex-row w-full h-full justify-evenly items-center gap-">
         {room && users && (
           <form
             className="flex flex-col justify-center"

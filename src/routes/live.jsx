@@ -1,7 +1,13 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { MapContainer, TileLayer, GeoJSON, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  GeoJSON,
+  Popup,
+  CircleMarker,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default function Live() {
@@ -35,6 +41,18 @@ export default function Live() {
     }
   };
 
+  function getRoomCenter(coordinates) {
+    let sumLat = 0,
+      sumLon = 0;
+    coordinates.forEach((coord) => {
+      sumLat += coord[1];
+      sumLon += coord[0];
+    });
+    const lat = sumLat / coordinates.length;
+    const lon = sumLon / coordinates.length;
+    return { lat, lon };
+  }
+
   const style = (feature) => {
     if (feature.properties.type === "perimeter") {
       return {
@@ -45,8 +63,8 @@ export default function Live() {
       };
     } else {
       return {
-        fillColor: "green",
-        color: "green",
+        fillColor: feature.properties.color,
+        color: feature.properties.color,
         weight: 2,
         fillOpacity: 0.5,
       };
@@ -73,7 +91,7 @@ export default function Live() {
     return (
       <MapContainer
         className="w-full h-full"
-        center={[50, 50]}
+        center={[150, 150]}
         zoom={1}
         style={{ backgroundColor: "inherit" }}
         crs={L.CRS.Simple}
@@ -83,13 +101,43 @@ export default function Live() {
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         /> */}
-        <GeoJSON data={geoData} onEachFeature={onEachFeature} style={style} />
+        <GeoJSON data={geoData} onEachFeature={onEachFeature} style={style}>
+          {geoData.features.map(
+            (feature) =>
+              feature.properties.users.length > 0 &&
+              feature.properties.type === "room" &&
+              feature.properties.users.map((user, index) => {
+                if (user) {
+                  const { lat, lon } = getRoomCenter(
+                    feature.geometry.coordinates[0]
+                  );
+                  const offset = index * 20;
+                  return (
+                    <CircleMarker
+                      key={user}
+                      center={[lat, lon + offset]}
+                      radius={12}
+                      fillColor="black"
+                      color="white"
+                      weight={4}
+                      opacity={1}
+                      fillOpacity={1}
+                      className="animate-pulse"
+                    />
+                  );
+                } else {
+                  console.error("Room not found for user:", user);
+                  return null;
+                }
+              })
+          )}
+        </GeoJSON>
       </MapContainer>
     );
   };
 
   return (
-    <div className="w-full h-screen text-white bg-cover bg-hero-pattern-1 overflow-hidden">
+    <div className="w-full h-screen text-white bg-cover bg-slate-900">
       <div className="fixed top-3 p-5 w-full flex justify-between items-center text-xl md:text-2xl z-20">
         <div className="text-2xl">
           <button className="border-2 rounded-md p-3 cursor-pointer hover:bg-white hover:text-black">

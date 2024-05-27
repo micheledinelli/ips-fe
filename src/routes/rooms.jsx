@@ -44,7 +44,7 @@ export default function Rooms() {
   // };
 
   return (
-    <div className="w-full h-screen text-white bg-cover bg-hero-pattern-1 overflow-hidden">
+    <div className="w-full h-screen text-white bg-slate-900 overflow-y-scroll overflow-x-hidden">
       <div className="fixed top-3 p-5 w-full flex justify-between items-center text-xl md:text-2xl">
         <div className="text-2xl">
           <button className="border-2 rounded-md p-3 cursor-pointer hover:bg-white hover:text-black">
@@ -69,9 +69,9 @@ export default function Rooms() {
         </div> */}
       </div>
       <div className="flex flex-col justify-center items-center w-full h-full">
-        <div className="text-4xl mb-10">Your rooms</div>
+        <div className="text-5xl mb-8">Your rooms</div>
         <div
-          className={`w-2/3 h-2/3 grid gap-y-10 ${
+          className={`w-2/3 h-2/3 grid gap-12 mt-12 ${
             rooms && rooms.length === 1
               ? "grid-cols-1"
               : rooms.length === 2

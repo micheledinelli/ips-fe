@@ -6,7 +6,7 @@ export default function Root() {
     <div className="w-full h-screen text-white bg-cover bg-hero-pattern-1 overflow-hidden">
       <div className="fixed top-3 p-5 m-5 w-full flex justify-between items-center text-xl md:text-2xl">
         <div className="text-4xl">IPS</div>
-        <div className="flex flex-row justify-evenly items-center w-1/2">
+        <div className="flex flex-row justify-evenly items-center w-1/3">
           <button className="border-2 rounded-md p-3 cursor-pointer hover:bg-white hover:text-black">
             <Link to={"rooms"}>MANAGE ROOMS</Link>
           </button>
@@ -17,7 +17,7 @@ export default function Root() {
       </div>
 
       <div className="flex flex-col justify-center items-center h-full">
-        <div className="text-5xl md:text-7xl mb-5">
+        <div className="text-5xl md:text-6xl lg:text-7xl mb-5">
           Indoor Positioning System
         </div>
         <div className="text-2xl md:text-4xl mt-2 mb-5">
