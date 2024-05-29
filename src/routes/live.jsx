@@ -137,7 +137,7 @@ export default function Live() {
   };
 
   return (
-    <div className="w-full h-screen text-white bg-cover bg-slate-900">
+    <div className="w-full h-screen text-white bg-hero-pattern-1 bg-cover">
       <div className="fixed top-3 p-5 w-full flex justify-between items-center text-xl md:text-2xl z-20">
         <div className="text-2xl">
           <button className="border-2 rounded-md p-3 cursor-pointer hover:bg-white hover:text-black">
@@ -145,7 +145,7 @@ export default function Live() {
           </button>
         </div>
       </div>
-      <div className="flex h-screen w-full justify-center items-center z-10">
+      <div className="flex flex-col h-screen w-full justify-center items-center z-10">
         <MapComponent />
       </div>
     </div>
