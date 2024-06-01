@@ -11,6 +11,7 @@ import {
 import "leaflet/dist/leaflet.css";
 
 export default function Live() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [geoData, setGeoData] = useState();
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Live() {
 
   const getLiveData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8888/live`);
+      const response = await axios.get(`${backendUrl}/live`);
       setGeoData(response.data);
     } catch (error) {
       console.error("Error fetching room:", error);

@@ -5,6 +5,7 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Room() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const { roomId } = useParams();
   const [room, setRoom] = useState(null);
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ export default function Room() {
 
   const getRoom = async () => {
     try {
-      const response = await axios.get(`http://localhost:8888/rooms/${roomId}`);
+      const response = await axios.get(`${backendUrl}/rooms/${roomId}`);
       setRoom(response.data);
     } catch (error) {
       toast.error("Error fetching room");
@@ -28,7 +29,7 @@ export default function Room() {
 
   const getUsers = async () => {
     axios
-      .get("http://localhost:8888/users")
+      .get(`${backendUrl}/users`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -39,7 +40,7 @@ export default function Room() {
 
   const getDevices = async () => {
     axios
-      .get("http://localhost:8888/devices")
+      .get(`${backendUrl}/devices`)
       .then((response) => {
         setDevices(response.data);
       })

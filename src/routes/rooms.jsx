@@ -9,6 +9,7 @@ import "../index.css";
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
   const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);
 
@@ -23,7 +24,7 @@ export default function Rooms() {
 
   const getRooms = async () => {
     axios
-      .get("http://localhost:8888/rooms")
+      .get(`${backendUrl}/rooms`)
       .then((response) => {
         setRooms(response.data);
       })
