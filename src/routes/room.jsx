@@ -67,7 +67,6 @@ export default function Room() {
       return;
     }
 
-    deviceId = parseInt(deviceId);
     if (!room.devices.includes(deviceId)) {
       setRoom((prevRoom) => ({
         ...prevRoom,
@@ -85,7 +84,6 @@ export default function Room() {
   };
 
   const handleRemoveDevice = (idToRemove) => {
-    idToRemove = parseInt(idToRemove);
     setRoom((prevRoom) => {
       const updatedDevices = prevRoom.devices.filter(
         (deviceId) => deviceId !== idToRemove
@@ -98,6 +96,7 @@ export default function Room() {
   };
 
   const findDeviceNameById = (devices, deviceId) => {
+    console.log(devices, deviceId);
     const device = devices.find((device) => device.deviceId === deviceId);
     return device ? device.name : "Device not found";
   };
