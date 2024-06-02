@@ -9,8 +9,7 @@ import config from "../../config.js";
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
-  console.log("Backend URL:", config.VITE_BACKEND_URL);
+  const backendUrl = config.VITE_BACKEND_URL;
 
   // const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
   // const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);
