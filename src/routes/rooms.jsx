@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../index.css";
-import config from "../../config.js";
 
 // import NewDeviceModal from "../components/NewDeviceModal";
 // import NewRoomModal from "../components/NewRoomModal";
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
-  const backendUrl = config.VITE_BACKEND_URL;
 
   // const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
   // const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);

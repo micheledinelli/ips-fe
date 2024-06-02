@@ -39,7 +39,7 @@ export default function Room() {
 
   const getDevices = async () => {
     axios
-      .get(`${backendUrl}/devices`)
+      .get(`/api/devices`)
       .then((response) => {
         setDevices(response.data);
       })
