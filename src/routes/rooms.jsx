@@ -25,7 +25,7 @@ export default function Rooms() {
 
   const getRooms = async () => {
     axios
-      .get(`${backendUrl}/rooms`)
+      .get(`${backendUrl}/api/rooms`)
       .then((response) => {
         setRooms(response.data);
       })

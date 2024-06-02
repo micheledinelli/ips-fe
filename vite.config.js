@@ -13,5 +13,11 @@ export default defineConfig({
     strictPort: true,
     host: true,
     origin: "http://localhost:3000",
+    proxy: {
+      "/api": {
+        target: process.env.VITE_BACKEND_URL,
+        changeOrigin: true,
+      },
+    },
   },
 });
