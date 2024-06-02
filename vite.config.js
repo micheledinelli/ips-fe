@@ -9,10 +9,10 @@ export default defineConfig({
     strictPort: true,
   },
   server: {
-    port: 3000,
+    port: 8080,
     strictPort: true,
     host: true,
-    origin: "http://localhost:3000",
+    origin: "http://localhost:8080",
     proxy: {
       "/api": {
         target: "http://localhost:8888",
