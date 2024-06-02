@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../index.css";
+import config from "../../config.js";
 
-// TODO: Handle room and device addition
 // import NewDeviceModal from "../components/NewDeviceModal";
 // import NewRoomModal from "../components/NewRoomModal";
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
-  const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
-  const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);
+  console.log("Backend URL:", config.VITE_BACKEND_URL);
+
+  // const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
+  // const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);
 
   useEffect(() => {
     // var source = new EventSource("http://localhost:8888/stream");
