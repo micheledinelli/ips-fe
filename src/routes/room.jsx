@@ -28,7 +28,7 @@ export default function Room() {
 
   const getUsers = async () => {
     axios
-      .get(`${backendUrl}/users`)
+      .get(`/api/users`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -123,7 +123,7 @@ export default function Room() {
 
     try {
       await toast.promise(
-        axios.put(`http://localhost:8888/rooms/${roomId}`, room),
+        axios.put(`/api/rooms/${roomId}`, room),
         {
           pending: "Updating room...",
           success: "Room updated!",
